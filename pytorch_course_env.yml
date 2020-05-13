@@ -1,0 +1,19 @@
+name: pytorchdev
+channels:
+  - defaults
+  - pytorch
+dependencies:
+  - numpy
+  - pandas
+  - matplotlib
+  - pillow
+  - pip
+  - plotly
+  - scikit-learn
+  - seaborn=0.10.1
+  - python=3.8.2
+  - jupyter=1.0.0
+  - pytorch
+  - torchvision
+  - cpuonly   # Remove this to support CUDA.
+  
