@@ -242,11 +242,25 @@ print(df['col2'].value_counts())            # Number of occurrences of the value
 new_df = df[(df['col1'] > 2) & (df['col2'] == 444)]
 print(f'\n{new_df}\n')
 
-# Apply new values to every single values in column or table.
+# Apply new values to every single values in column or table. 'series.map(funcs)' also the same.
 df['NEW'] = df['col1'].apply(lambda num: num * 2)
 print(df)
 
 del df['NEW']       # Delete column.
+print(df)
+
+df['NEW'] = df['col1'].map(lambda num: 'EVEN' if num % 2 == 0 else 'ODD')
+print(df)
+
+df.drop('NEW', axis=1)
+print(df)
+
+# ANOTHER USE CASE OF 'map()' function passing a dictionary.
+#   https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.map.html
+df['NEW'] = df['col1'].map({1: 'ONE', 2: 'TWO', 3: 'THREE'})
+print(df)
+
+df.drop('NEW', axis=1)
 print(df)
 
 print(df.columns)   # Columns names.
@@ -255,6 +269,9 @@ print(df.info())
 
 df.sort_values('col2', inplace=True, ascending=False)   # Sort values.
 print(df)
+
+print(df['col1'].idxmin())  # Get the minimum value's index.
+print(df['col1'].idxmax())  # Get the maximum value's index.
 
 print('''
 # #################################################################################################
@@ -290,6 +307,16 @@ print(type(html))   # Is a list.
 print(len(html))
 
 df = html[0]
-print(df.info())
+print(df.info(), end='\n\n')
+print(len(df['City']))
 
 df.to_csv('../resources/output/example_out3.csv', index=False)
+
+# #################################################################################################
+# Notes :-
+#
+#   1. Statement 'len(df)' returns how many rows/index are available in the DataFrame.
+#   2. Statement 'len(df["col1"])' also return the length of the Series essentially.
+#      It looks like 'len(Series)'
+#
+# ################################################################################################
