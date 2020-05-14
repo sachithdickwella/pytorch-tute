@@ -112,8 +112,8 @@ venv.bak/
 .idea
 *.iml
 .vscode
-out/*
-!out/*.gitkeep
+resources/output/*
+!resources/output/*.gitkeep
 __pycache__
 
 # Spyder project settings

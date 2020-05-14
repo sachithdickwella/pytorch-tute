@@ -16,4 +16,7 @@ dependencies:
   - pytorch
   - torchvision
   - cpuonly   # Remove this to support CUDA.
+  - pylint
+  - xlrd
+  - lxml
   

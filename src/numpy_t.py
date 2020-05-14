@@ -285,3 +285,12 @@ print(arr_2d.sum(axis=0))
 
 # GIVE SUM Across the COLUMNS (axis=1)
 print(arr_2d.sum(axis=1))
+
+# Exercise Question
+
+print(np.arange(1, 50.5, 0.1))  # Start, end and step sizes can be floating point numbers.
+
+'''
+To retain the 2-dimensional structure, should slice the structure, 
+rather than get the value from specific index number.
+'''
