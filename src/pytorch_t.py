@@ -19,7 +19,7 @@ print('''
 #       * 1D Tensor - Vector
 #       * 2D Tensor - Matrix
 #       * 3D Tensor
-#       * ND Tensor (4D, 5D and higher dimensional Tensors) 
+#       * ND Tensors (4D, 5D and higher dimensional Tensors) 
 #        
 # Tensor Basic - Part One
 # #################################################################################################
@@ -69,22 +69,22 @@ print('''
 # Different between 'torch.tensor(data)', 'torch.Tensor(data)' and 'torch.FloatTensor(data)' functions.
 arr = np.array([1, 2, 3, 4, 5, 6])
 print(arr)
-print(arr.dtype) # dtype = int32
+print(arr.dtype)  # dtype = int32
 
 t1 = torch.tensor(arr)
 print(t1)
-print(t1.dtype)  # dtype = int32 (Retained the original numpy arrays data type)
+print(t1.dtype)   # dtype = int32 (Retained the original numpy arrays data type)
 
 t2 = torch.Tensor(arr)
 print(t2)
-print(t2.dtype)  # dtype = float32 (Change data type to floating point)
+print(t2.dtype)   # dtype = float32 (Change data type to floating point)
 
 t3 = torch.FloatTensor(arr)
 print(t3)
-print(t3.dtype)  # dtype = float32 (Change date type to floating point)
+print(t3.dtype)   # dtype = float32 (Change date type to floating point)
 
 # torch.Tensor and torch.FloatTensor are classes just like torch.BooleanTensor and other wrapper type tensors.
-# But 'torch.Tensor(data)' is an alias for 'torch.FloatTensor(data)'. They are the exact same.
+# But 'torch.Tensor(data)' is an alias for 'torch.FloatTensor(data)'. They are exact the same.
 
 # INITIALIZE TENSORS from the scratch.
 
@@ -132,7 +132,7 @@ print(x)
 x = torch.randn(4, 3)   # Create random number of standard normal distributions.
                         # (mean = 0, standard deviation(sigma) = 1)
 
-i = torch.randint(0, 10, (5, 5))    # Size tuple is mandatory.
+i = torch.randint(0, 10, (5, 5))    # Size tuple/int/list is mandatory.
 print(i)
 
 # Create tensors like(size/dimensions) other tensors.
@@ -192,7 +192,7 @@ viewed = x.view(3, 3)
 print(reshaped)
 print(viewed)
 
-print(x)    # t.view() and t.reshape() functions are essentially evenly function by returning reoriented tensor.
+print(x)    # t.view() and t.reshape() functions are essentially evenly execute by returning reoriented tensor.
 
 reshaped[0, 1] = 999
 viewed[1, 1] = 999
@@ -201,14 +201,14 @@ print(x)
 # Both the function retain the link with the original tensor and any change do to the viewed or reshaped tensor
 # would alter the original tensor.
 #
-# By changing the original tensor values, we can reflects changes on reshaped and viewed tensors.
+# By changing the original tensor values, could reflect changes on reshaped and viewed tensors.
 x[7] = 99999
 
 print(x)
 print(reshaped)
 print(viewed)
 
-# view() can infer the dimension by looking at other dimension value an reshape the tensor.
+# view() can infer the dimension by looking at other dimension value an reshape the tensor. So does the reshape().
 
 x = torch.arange(0, 10)
 print(x)
@@ -220,7 +220,7 @@ print(x.view(-1, 5))    # On either dimensions it works.
 x = torch.arange(1, 10)
 print(x)
 
-x = x.view_as(reshaped)  # 'reshaped' is a (3, 3) tesnsor which created earlier in the file.
+x = x.view_as(reshaped)  # 'reshaped' is a (3, 3) tensor which created earlier in the file.
 print(x)
 
 # Basic arithmetic with Tensor objects.
@@ -270,6 +270,7 @@ a = torch.tensor([1, 2, 3])
 b = torch.tensor([4, 5, 6])
 
 # Dot products. All three ways belows are the same operation. Should match dimensions of two tensors by size.
+# Also known as Scalar Product.
 print(torch.dot(a, b))
 print(a.dot(b))
 print(b.dot(a))
@@ -295,9 +296,34 @@ print(a @ b)  # Also works. But '@' use to define python decorators. So, '.mm(t)
 # L2 and Euclidian Norm
 x = torch.tensor([2., 3., 4., 5.])
 
-print(x.norm())     # Euclidian Norm
+print(x.norm())     # 'Euclidian' Norm
 print(x.numel())    # Number of elements in the tensor.
 print(len(x))       # Same for 1D tensors.
 
 print(len(a))       # Only return number of rows. So must use '.numel()' function.
 print(a.numel())
+
+# MATRIX MULTIPLICATION WITH BROADCASTING (https://pytorch.org/docs/stable/notes/broadcasting.html#).
+a = torch.randint(low=0, high=10, size=(2, 3, 4))  # 3D Tensor (2 * (3 * 4))
+b = torch.randint(1, 2, size=(4, 5))               # 2D Tensor (4 * 5)
+
+print(a, b, sep='\n')
+
+c = a.matmul(b)
+# OR
+c = torch.matmul(a, b)
+print(c)
+
+print(a.size())
+print(b.size())
+print(c.size())
+# Other way around [b.matmul(a)] throws RuntimeError: size mismatch, m1: [8 x 3], m2: [5 x 4].
+
+# With .mm() function throws an error for same inputs.
+# print(a.mm(b))
+# RuntimeError: matrices expected, got 3D, 2D tensors.
+
+# Tensor initialization without giving 2nd dimension.
+x = torch.ones(2,)
+print(x)
+# Create a tensor with 1 dimension hence the 2nd dimension not given.

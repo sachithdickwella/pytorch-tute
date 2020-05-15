@@ -148,7 +148,7 @@ print(r.dtype)
 
 i = np.array([1, 2, 3, 'a', 'b', 'c', 4])
 print(i)
-print(i.dtype) # 11 character long Unicode (U11).
+print(i.dtype)  # 11 character long Unicode (U11).
 
 print('''
 # #################################################################################################

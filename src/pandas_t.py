@@ -70,7 +70,7 @@ print(colW, end='\n\n')
 
 # OR
 
-print(df.W, end='\n\n') # Not recommended.
+print(df.W, end='\n\n')     # Not recommended.
 
 # Select multiple COLUMNS.
 colWY = df[['W', 'Y']]
@@ -263,11 +263,11 @@ print(df)
 df.drop('NEW', axis=1)
 print(df)
 
-print(df.columns)   # Columns names.
+print(df.columns)   # Column names.
 print(df.index)     # Index names.
 print(df.info())
 
-df.sort_values('col2', inplace=True, ascending=False)   # Sort values.
+df.sort_values('col2', axis=0, inplace=True, ascending=False)   # Sort values.
 print(df)
 
 print(df['col1'].idxmin())  # Get the minimum value's index.
