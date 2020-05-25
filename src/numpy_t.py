@@ -140,8 +140,8 @@ print(r.min())
 
 # OR get the index of max and min values.
 
-print(r.argmax())
-print(r.argmin())
+print(r.argmax())   # Get the max value's index.
+print(r.argmin())   # Get the min value's index.
 
 # Get the data type of array elements.
 print(r.dtype)
