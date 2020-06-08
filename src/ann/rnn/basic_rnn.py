@@ -1,12 +1,11 @@
 #!/isr/bin/env python3
 # -*- coding: utf-8 -*-
 
+import time
+
+import matplotlib.pyplot as plt
 import torch
 import torch.nn as nn
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import time
 
 print("""
 # #####################################################################################################################
@@ -83,7 +82,7 @@ class LSTM(nn.Module):
         self.hidden_size = hidden_size
         '''
         LSTM layer takes input size (how many data points takes in) and how many neurons should create in the LSTM 
-        layer.
+        layer. Here, the 'input_size' denotes the number of features in the dataset. 
         '''
         self.lstm = nn.LSTM(input_size, hidden_size)
         '''
@@ -227,7 +226,7 @@ for i in range(future):
         preds.append(model(seq))
 
 plt.figure(figsize=(12, 4))
-plt.xlim(800, 800 + future)
+plt.xlim(0, 800 + future)
 plt.grid(True)
 plt.plot(y.numpy())
 plt.plot(range(800, 800 + future), preds[window_size:])
