@@ -136,3 +136,8 @@ dmypy.json
 
 # PyTorch Trained Model Dictionaries or Models.
 *.pt
+
+# Ignore data folders.
+MNIST
+KMNIST
+cifar-10*
