@@ -141,3 +141,4 @@ dmypy.json
 MNIST
 KMNIST
 cifar-10*
+ptl/
