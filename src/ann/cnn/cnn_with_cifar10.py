@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf8 -*-
 
-import time
+import matplotlib.pyplot as plt
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import numpy as np
+from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 from torchvision.utils import make_grid
-from torch.utils.data import DataLoader
-import matplotlib.pyplot as plt
 
 print("""
 # #####################################################################################################################
